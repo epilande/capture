@@ -6,16 +6,20 @@ import Input from 'components/Input';
 class HomePage extends Component {
   constructor() {
     super();
-    this._onInputChange = this._onInputChange.bind(this);
+    this._onInputEnter = this._onInputEnter.bind(this);
   }
 
-  _onInputChange(event) {
-    this.props.dispatch(updateText(event.target.value));
+  _onInputEnter(event) {
+    const text = event.target.value.trim()
+
+    if (event.which === 13) {
+      this.props.dispatch(updateText(event.target.value));
+    }
   }
 
   render() {
     return (
-      <Input onChange={this._onInputChange} />
+      <Input onKeyDown={this._onInputEnter} />
     );
   }
 }
