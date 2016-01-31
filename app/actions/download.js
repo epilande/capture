@@ -1,5 +1,5 @@
-export const UPDATE_TEXT = 'UPDATE_TEXT';
+export const ADD_ITEM = 'ADD_ITEM';
 
-export function updateText(text) {
-  return { type: UPDATE_TEXT, text };
+export function addItem(url) {
+  return { type: ADD_ITEM, url };
 }
