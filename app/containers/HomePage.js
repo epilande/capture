@@ -11,7 +11,7 @@ class HomePage extends Component {
     this._onInputEnter = this._onInputEnter.bind(this);
     this.state = {
       inputValue: ''
-    }
+    };
   }
 
   _onInputChange(event) {
@@ -19,11 +19,11 @@ class HomePage extends Component {
   }
 
   _onInputEnter(event) {
-    const url = event.target.value.trim()
+    const url = event.target.value.trim();
 
     if (url && event.which === 13) {
       this.props.dispatch(addItem(url));
-      this.setState({ inputValue: '' })
+      this.setState({ inputValue: '' });
     }
   }
 

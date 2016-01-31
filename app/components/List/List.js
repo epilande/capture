@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
 
-const List = ({items}) => {
+const List = ({ items }) => {
   const ListItems = items.map((item) => {
-    return <li key={item.id}>{item.url}</li>
-  })
+    return <li key={item.id}>{item.url}</li>;
+  });
 
   return (
     <ul>

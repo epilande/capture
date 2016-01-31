@@ -18,13 +18,13 @@ Input.defaultProps = {
 };
 
 Input.propTypes = {
-  id: React.PropTypes.string,
-  className: React.PropTypes.string,
-  type: React.PropTypes.string,
-  placeholder: React.PropTypes.string,
-  value: React.PropTypes.string,
-  onChange: React.PropTypes.func,
-  onKeyDown: React.PropTypes.func
+  id: PropTypes.string,
+  className: PropTypes.string,
+  type: PropTypes.string,
+  placeholder: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+  onKeyDown: PropTypes.func
 };
 
 export default Input;
