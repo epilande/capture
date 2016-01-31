@@ -6,27 +6,40 @@ import Input from 'components/Input';
 class HomePage extends Component {
   constructor() {
     super();
+    this._onInputChange = this._onInputChange.bind(this);
     this._onInputEnter = this._onInputEnter.bind(this);
+    this.state = {
+      inputValue: ''
+    }
+  }
+
+  _onInputChange(event) {
+    this.setState({ inputValue: event.target.value });
   }
 
   _onInputEnter(event) {
     const text = event.target.value.trim()
 
-    if (event.which === 13) {
-      this.props.dispatch(updateText(event.target.value));
+    if (text && event.which === 13) {
+      this.props.dispatch(updateText(text));
+      this.setState({ inputValue: '' })
     }
   }
 
   render() {
     return (
-      <Input onKeyDown={this._onInputEnter} />
+      <Input
+        onChange={this._onInputChange}
+        onKeyDown={this._onInputEnter}
+        value={this.state.inputValue}
+      />
     );
   }
 }
 
 function mapStateToProps(state) {
   return {
-    app: state.app
+    download: state.download
   };
 }
 
