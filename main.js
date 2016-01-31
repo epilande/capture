@@ -25,7 +25,12 @@ app.on('window-all-closed', () => {
 
 
 app.on('ready', () => {
-  mainWindow = new BrowserWindow({ width: 1024, height: 728 });
+  mainWindow = new BrowserWindow({
+    'min-width': 767,
+    'min-height': 400,
+    'width': 1024,
+    'height': 728
+  });
 
   if (process.env.HOT) {
     mainWindow.loadURL(`file://${__dirname}/app/hot-dev-app.html`);
