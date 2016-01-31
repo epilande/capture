@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateText } from 'actions/download';
 import Input from 'components/Input';
+import List from 'components/List';
 
 class HomePage extends Component {
   constructor() {
@@ -28,11 +29,15 @@ class HomePage extends Component {
 
   render() {
     return (
-      <Input
-        onChange={this._onInputChange}
-        onKeyDown={this._onInputEnter}
-        value={this.state.inputValue}
-      />
+      <div>
+        <h1>Capture</h1>
+        <Input
+          onChange={this._onInputChange}
+          onKeyDown={this._onInputEnter}
+          value={this.state.inputValue}
+        />
+        <List />
+      </div>
     );
   }
 }
