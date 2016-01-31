@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import counter from './counter';
+import download from './download';
 
 const rootReducer = combineReducers({
-  counter
+  download
 });
 
 export default rootReducer;
