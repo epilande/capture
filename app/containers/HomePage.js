@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateText } from 'actions/download';
+import { addItem } from 'actions/download';
 import Input from 'components/Input';
 import List from 'components/List';
 
@@ -19,10 +19,10 @@ class HomePage extends Component {
   }
 
   _onInputEnter(event) {
-    const text = event.target.value.trim()
+    const url = event.target.value.trim()
 
-    if (text && event.which === 13) {
-      this.props.dispatch(updateText(text));
+    if (url && event.which === 13) {
+      this.props.dispatch(addItem(url));
       this.setState({ inputValue: '' })
     }
   }
