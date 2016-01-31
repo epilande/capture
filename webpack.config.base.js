@@ -17,6 +17,8 @@ module.exports = {
     libraryTarget: 'commonjs2'
   },
   resolve: {
+    root: path.resolve('app'),
+    modulesDirectories: ['node_modules'],
     extensions: ['', '.js', '.jsx'],
     packageMains: ['webpack', 'browser', 'web', 'browserify', ['jam', 'main'], 'main']
   },

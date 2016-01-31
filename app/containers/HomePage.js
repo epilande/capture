@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateText } from '../actions/download';
-import Input from '../components/Input';
+import { updateText } from 'actions/download';
+import Input from 'components/Input';
 
 class HomePage extends Component {
   constructor() {

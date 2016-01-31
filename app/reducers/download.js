@@ -1,4 +1,4 @@
-import { UPDATE_TEXT } from '../actions/download';
+import { UPDATE_TEXT } from 'actions/download';
 
 const initialState = {
   inputText: ''
