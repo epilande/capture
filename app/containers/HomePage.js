@@ -28,6 +28,8 @@ class HomePage extends Component {
   }
 
   render() {
+    const { download: { items } } = this.props;
+
     return (
       <div>
         <h1>Capture</h1>
@@ -36,7 +38,7 @@ class HomePage extends Component {
           onKeyDown={this._onInputEnter}
           value={this.state.inputValue}
         />
-        <List />
+        <List items={items} />
       </div>
     );
   }
