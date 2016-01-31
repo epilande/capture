@@ -7,6 +7,8 @@ export default createDevTools(
   <DockMonitor
     toggleVisibilityKey="ctrl-h"
     changePositionKey="ctrl-q"
+    defaultIsVisible={false}
+    theme="monokai"
   >
     <LogMonitor />
   </DockMonitor>
