@@ -9,11 +9,11 @@ export default function reducer(state = initialState, action = {}) {
     case ADD_ITEM:
       return {
         items: [
+          ...state.items,
           {
             id: state.items.reduce((maxId, item) => Math.max(item.id, maxId), -1) + 1,
             url: action.url
-          },
-          ...state.items
+          }
         ]
       };
     default:
