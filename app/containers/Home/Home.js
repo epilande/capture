@@ -32,7 +32,7 @@ class Home extends Component {
     const { download: { items } } = this.props;
 
     return (
-      <div>
+      <div className={styles.base}>
         <h1>Capture</h1>
         <Input
           onChange={this._onInputChange}
