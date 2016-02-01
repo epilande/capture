@@ -23,16 +23,24 @@ config.module.loaders.push({
   test: /\.global\.css$/,
   loaders: [
     'style-loader',
-    'css-loader?sourceMap'
+    'css-loader?sourceMap&importLoaders=1',
+    'postcss-loader'
   ]
 }, {
   test: /^((?!\.global).)*\.css$/,
   loaders: [
     'style-loader',
-    'css-loader?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!'
+    'css-loader?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+    'postcss-loader'
   ]
 });
 
+config.postcss = function postcss() {
+  return [
+    require('postcss-modules-values'),
+    require('postcss-nested')
+  ];
+};
 
 config.plugins.push(
   new webpack.HotModuleReplacementPlugin(),
