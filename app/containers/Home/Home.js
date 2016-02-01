@@ -33,12 +33,15 @@ class Home extends Component {
 
     return (
       <div className={styles.base}>
-        <h1>Capture</h1>
-        <Input
-          onChange={this._onInputChange}
-          onKeyDown={this._onInputEnter}
-          value={this.state.inputValue}
-        />
+        <div className={styles.inputContainer}>
+          <Input
+            className={styles.input}
+            placeholder="URL to capture video"
+            onChange={this._onInputChange}
+            onKeyDown={this._onInputEnter}
+            value={this.state.inputValue}
+          />
+        </div>
         <List items={items} />
       </div>
     );
