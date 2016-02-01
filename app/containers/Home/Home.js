@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addItem } from 'actions/download';
+import styles from './Home.css';
 import Input from 'components/Input';
 import List from 'components/List';
 
-class HomePage extends Component {
+class Home extends Component {
   constructor() {
     super();
     this._onInputChange = this._onInputChange.bind(this);
@@ -50,4 +51,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(HomePage);
+export default connect(mapStateToProps)(Home);
