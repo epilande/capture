@@ -4,6 +4,7 @@ import { addItem } from 'actions/download';
 import styles from './Home.css';
 import Input from 'components/Input';
 import List from 'components/List';
+import { validUrl } from 'utils/validation';
 
 class Home extends Component {
   constructor() {
@@ -22,9 +23,13 @@ class Home extends Component {
   _onInputEnter(event) {
     const url = event.target.value.trim();
 
-    if (url && event.which === 13) {
-      this.props.dispatch(addItem(url));
-      this.setState({ inputValue: '' });
+    if (event.which === 13 && url) {
+      if (validUrl(url)) {
+        this.props.dispatch(addItem(url));
+        this.setState({ inputValue: '' });
+      } else {
+        // display error message
+      }
     }
   }
 
