@@ -12,12 +12,16 @@ class Home extends Component {
     this._onInputChange = this._onInputChange.bind(this);
     this._onInputEnter = this._onInputEnter.bind(this);
     this.state = {
-      inputValue: ''
+      inputValue: '',
+      inputValid: true
     };
   }
 
   _onInputChange(event) {
-    this.setState({ inputValue: event.target.value });
+    this.setState({
+      inputValue: event.target.value,
+      inputValid: true
+    });
   }
 
   _onInputEnter(event) {
@@ -28,7 +32,7 @@ class Home extends Component {
         this.props.dispatch(addItem(url));
         this.setState({ inputValue: '' });
       } else {
-        // display error message
+        this.setState({ inputValid: false });
       }
     }
   }
@@ -46,6 +50,9 @@ class Home extends Component {
             onKeyDown={this._onInputEnter}
             value={this.state.inputValue}
           />
+          <p className={styles.inputError}>
+            { !this.state.inputValid ? 'Url is invalid' : ''}
+          </p>
         </div>
         <List items={items} />
       </div>
