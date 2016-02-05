@@ -1,12 +1,21 @@
 .base {
-  margin: 2rem auto;
+  margin: 3rem auto;
   width: 100%;
   max-width: 550px;
 }
 
 .inputContainer {
+  position: relative;
   background: #fff;
   padding: 1rem;
+}
+
+.inputError {
+  position: absolute;
+  right: 1rem;
+  top: -1.5rem;
+  color: #F44336;
+  font-weight: 600;
 }
 
 .input {
