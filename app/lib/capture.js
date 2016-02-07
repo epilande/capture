@@ -2,8 +2,8 @@
 // import fs from 'fs';
 import ytdl from 'youtube-dl';
 
-export function downloadVideo() {
-  const video = ytdl('https://www.youtube.com/watch?v=YW1VS9Ftqdc', ['--format=18'], { cwd: __dirname });
+export function downloadVideo(url) {
+  const video = ytdl(url, ['--format=18'], { cwd: __dirname });
 
   video.on('error', (err) => {
     console.log(err);
