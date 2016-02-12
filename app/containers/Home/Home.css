@@ -20,11 +20,18 @@
 
 .input {
   width: 100%;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 2.2rem 0.5rem 1rem;
   font-size: 1.125rem;
   font-weight: 300;
   background: #eef3f5;
   outline: 0;
   border: 1px solid rgba(#ddd, 0.7);
   border-radius: 2px;
+}
+
+.gear {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  cursor: pointer;
 }

@@ -4,6 +4,7 @@ import { addItem } from 'actions/download';
 import styles from './Home.css';
 import Input from 'components/Input';
 import List from 'components/List';
+import Gear from 'components/icons/Gear';
 import { validUrl } from 'utils/validation';
 
 class Home extends Component {
@@ -49,6 +50,11 @@ class Home extends Component {
             onChange={this._onInputChange}
             onKeyDown={this._onInputEnter}
             value={this.state.inputValue}
+          />
+          <Gear
+            className={styles.gear}
+            fill="#333"
+            opacity={0.25}
           />
           <p className={styles.inputError}>
             { !this.state.inputValid ? 'Url is invalid' : ''}
