@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import download from './download';
+import settings from './settings';
 
 const rootReducer = combineReducers({
-  download
+  download,
+  settings
 });
 
 export default rootReducer;
