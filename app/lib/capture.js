@@ -1,9 +1,10 @@
 /* eslint strict: 0, no-console: 0 */
 // import fs from 'fs';
+// import path from 'path';
 import ytdl from 'youtube-dl';
 
-export function downloadVideo(url) {
-  const video = ytdl(url, ['--format=18'], { cwd: __dirname });
+export function downloadVideo(url, options = [], output) {
+  const video = ytdl(url, options, { cwd: __dirname });
 
   video.on('error', (err) => {
     console.log(err);
@@ -23,5 +24,5 @@ export function downloadVideo(url) {
     console.log('Info: ', info);
   });
 
-  // video.pipe(fs.createWriteStream('myvideo.mp4'));
+  // video.pipe(fs.createWriteStream(path.resolve(output, 'myvideo.mp4')));
 }
