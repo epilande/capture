@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addItem } from 'actions/download';
+import { setOutputDir } from 'actions/settings';
 import styles from './Home.css';
 import Input from 'components/Input';
 import List from 'components/List';
@@ -42,6 +43,8 @@ class Home extends Component {
   _setOutput() {
     const dialog = require('remote').dialog;
     const dir = dialog.showOpenDialog({ properties: ['openDirectory', 'createDirectory'] });
+
+    this.props.dispatch(setOutputDir(...dir));
   }
 
   render() {
