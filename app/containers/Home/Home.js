@@ -12,6 +12,7 @@ class Home extends Component {
     super();
     this._onInputChange = this._onInputChange.bind(this);
     this._onInputEnter = this._onInputEnter.bind(this);
+    this._setOutput = this._setOutput.bind(this);
     this.state = {
       inputValue: '',
       inputValid: true
@@ -38,6 +39,11 @@ class Home extends Component {
     }
   }
 
+  _setOutput() {
+    const dialog = require('remote').dialog;
+    const dir = dialog.showOpenDialog({ properties: ['openDirectory', 'createDirectory'] });
+  }
+
   render() {
     const { download: { items } } = this.props;
 
@@ -55,6 +61,7 @@ class Home extends Component {
             className={styles.gear}
             fill="#333"
             opacity={0.25}
+            onClick={this._setOutput}
           />
           <p className={styles.inputError}>
             { !this.state.inputValid ? 'Url is invalid' : ''}
