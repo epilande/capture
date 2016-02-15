@@ -32,7 +32,8 @@ class Home extends Component {
 
     if (event.which === 13 && url) {
       if (validUrl(url)) {
-        this.props.dispatch(addItem(url));
+        const { path } = this.props.settings;
+        this.props.dispatch(addItem(url, null, path));
         this.setState({ inputValue: '' });
       } else {
         this.setState({ inputValid: false });
@@ -78,7 +79,8 @@ class Home extends Component {
 
 function mapStateToProps(state) {
   return {
-    download: state.download
+    download: state.download,
+    settings: state.settings
   };
 }
 
