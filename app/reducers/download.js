@@ -1,4 +1,4 @@
-import { ADD_ITEM } from 'actions/download';
+import { ADD_ITEM, PROGRESS_ITEM } from 'actions/download';
 
 const initialState = {
   items: []
@@ -15,6 +15,11 @@ export default function reducer(state = initialState, action = {}) {
             url: action.url
           }
         ]
+      };
+    case PROGRESS_ITEM:
+      return {
+        ...state,
+        percent: action.percent
       };
     default:
       return state;
