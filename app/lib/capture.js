@@ -5,7 +5,6 @@ import ytdl from 'youtube-dl';
 
 export function init(url, options = [], callback) {
   const video = ytdl(url, options, { cwd: __dirname });
-  console.log('downloadVideo func: ', url, options);
 
   video.on('error', (err) => {
     console.log(err);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addItem } from 'actions/download';
+import { download } from 'actions/download';
 import { setOutputDir } from 'actions/settings';
 import styles from './Home.css';
 import Input from 'components/Input';
@@ -33,7 +33,7 @@ class Home extends Component {
     if (event.which === 13 && url) {
       if (validUrl(url)) {
         const { path } = this.props.settings;
-        this.props.dispatch(addItem(url, null, path));
+        this.props.dispatch(download(url, null, path));
         this.setState({ inputValue: '' });
       } else {
         this.setState({ inputValid: false });
