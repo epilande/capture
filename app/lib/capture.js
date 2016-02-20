@@ -4,25 +4,24 @@ import path from 'path';
 import ytdl from 'youtube-dl';
 
 export function downloadVideo(url, options = [], output) {
-  ytdl.getInfo(url, options, (err, info) => {
-    console.log('downloadVideo func: ', url, options, output);
-    console.log('getInfo err: ', err);
-    if (err) throw err;
-
+  console.log('downloadVideo func: ', url, options, output);
+  return new Promise((resolve, reject) => {
+    ytdl.getInfo(url, options, (err, info) => {
+      if (err) {
+        reject(err);
+      }
+      resolve(info);
+    });
+  }).then((result) => {
+    console.log('Then result: ', result);
     const video = ytdl(url, options, { cwd: __dirname });
 
-    // video.on('error', (err) => {
-    //   console.log(err);
-    // });
+    video.on('error', (err) => {
+      console.log(err);
+    });
 
-    console.log('getInfo info: ', info);
-
-    // video.on('info', (info) => {
-    //   console.log('Download started');
-    //   console.log(`filename: ${info._filename}`);
-    //   console.log('Info: ', info);
-    // });
-
-    video.pipe(fs.createWriteStream(path.resolve(output, `${info.title}.mp4`)));
+    video.pipe(fs.createWriteStream(path.resolve(output, `${result.title}.mp4`)));
+  }).catch((error) => {
+    console.log('Catch: ', error);
   });
 }
