@@ -16,18 +16,28 @@ config.entry = './app/index';
 config.output.publicPath = '../dist/';
 
 config.module.loaders.push({
-  test: /^((?!\.module).)*\.css$/,
+  test: /\.global\.css$/,
   loader: ExtractTextPlugin.extract(
     'style-loader',
-    'css-loader'
+    'css-loader',
+    'postcss-loader'
   )
 }, {
-  test: /\.module\.css$/,
+  test: /^((?!\.global).)*\.css$/,
   loader: ExtractTextPlugin.extract(
     'style-loader',
-    'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+    'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+    'postcss-loader'
   )
 });
+
+config.postcss = function postcss() {
+  return [
+    require('postcss-modules-values'),
+    require('postcss-nested'),
+    require('rucksack-css')
+  ];
+};
 
 config.plugins.push(
   new webpack.optimize.OccurenceOrderPlugin(),

@@ -22,7 +22,7 @@ config.module.loaders.push({
   test: /\.global\.css$/,
   loaders: [
     'style-loader',
-    'css-loader?sourceMap&importLoaders=1',
+    'css-loader?sourceMap',
     'postcss-loader'
   ]
 }, {
