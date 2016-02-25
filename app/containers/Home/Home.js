@@ -32,8 +32,8 @@ class Home extends Component {
 
     if (event.which === 13 && url) {
       if (validUrl(url)) {
-        const { path } = this.props.settings;
-        this.props.dispatch(download(url, null, path));
+        const { output } = this.props.settings;
+        this.props.dispatch(download(url, null, output));
         this.setState({ inputValue: '' });
       } else {
         this.setState({ inputValid: false });

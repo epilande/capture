@@ -1,7 +1,7 @@
 import { OUTPUT_DIR } from 'actions/settings';
 
 const initialState = {
-  path: '',
+  output: '',
   format: '',
   quality: ''
 };
@@ -11,7 +11,7 @@ export default function reducer(state = initialState, action = {}) {
     case OUTPUT_DIR:
       return {
         ...state,
-        path: action.path
+        output: action.output
       };
     default:
       return state;
