@@ -18,11 +18,9 @@ if (process.env.NODE_ENV === 'development') {
   require('electron-debug')();
 }
 
-
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit();
 });
-
 
 app.on('ready', () => {
   mainWindow = new BrowserWindow({
@@ -30,6 +28,10 @@ app.on('ready', () => {
     'min-height': 400,
     'width': 1024,
     'height': 728
+  });
+
+  mainWindow.webContents.on('dom-ready', () => {
+    mainWindow.webContents.send('downloads-dir', app.getPath('downloads'));
   });
 
   if (process.env.HOT) {

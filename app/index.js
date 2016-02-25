@@ -4,6 +4,8 @@ import { Provider } from 'react-redux';
 import { Router } from 'react-router';
 import routes from 'routes';
 import configureStore from 'store/configureStore';
+import { setOutputDir } from 'actions/settings';
+import { ipcRenderer } from 'electron';
 import 'app.global.css';
 
 const store = configureStore();
@@ -16,6 +18,13 @@ render(
   </Provider>,
   document.getElementById('root')
 );
+
+ipcRenderer.on('downloads-dir', (event, dir) => {
+  // set default output dir to ~/Downloads
+  if (!store.getState().settings.output) {
+    store.dispatch(setOutputDir(dir));
+  }
+});
 
 if (process.env.NODE_ENV !== 'production') {
   // Use require because imports can't be conditional.
