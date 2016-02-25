@@ -45,7 +45,9 @@ class Home extends Component {
     const dialog = require('remote').dialog;
     const dir = dialog.showOpenDialog({ properties: ['openDirectory', 'createDirectory'] });
 
-    this.props.dispatch(setOutputDir(...dir));
+    if (dir) {
+      this.props.dispatch(setOutputDir(...dir));
+    }
   }
 
   render() {
@@ -56,7 +58,7 @@ class Home extends Component {
         <div className={styles.inputContainer}>
           <Input
             className={styles.input}
-            placeholder="URL to capture video"
+            placeholder="URL to capture"
             onChange={this._onInputChange}
             onKeyDown={this._onInputEnter}
             value={this.state.inputValue}
