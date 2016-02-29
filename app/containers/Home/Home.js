@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { download } from 'actions/download';
 import { setOutputDir } from 'actions/settings';
@@ -9,6 +9,14 @@ import Gear from 'components/icons/Gear';
 import { validUrl } from 'utils/validation';
 
 class Home extends Component {
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    settings: PropTypes.shape({
+      output: PropTypes.string,
+    }),
+    download: PropTypes.object,
+  };
+
   constructor() {
     super();
     this._onInputChange = this._onInputChange.bind(this);
@@ -16,14 +24,14 @@ class Home extends Component {
     this._setOutput = this._setOutput.bind(this);
     this.state = {
       inputValue: '',
-      inputValid: true
+      inputValid: true,
     };
   }
 
   _onInputChange(event) {
     this.setState({
       inputValue: event.target.value,
-      inputValid: true
+      inputValid: true,
     });
   }
 
@@ -82,7 +90,7 @@ class Home extends Component {
 function mapStateToProps(state) {
   return {
     download: state.download,
-    settings: state.settings
+    settings: state.settings,
   };
 }
 

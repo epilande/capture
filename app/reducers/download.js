@@ -1,7 +1,7 @@
 import { ADD_ITEM, PROGRESS_ITEM } from 'actions/download';
 
 const initialState = {
-  items: []
+  items: [],
 };
 
 export default function reducer(state = initialState, action = {}) {
@@ -12,14 +12,14 @@ export default function reducer(state = initialState, action = {}) {
           ...state.items,
           {
             id: state.items.reduce((maxId, item) => Math.max(item.id, maxId), -1) + 1,
-            url: action.url
-          }
-        ]
+            url: action.url,
+          },
+        ],
       };
     case PROGRESS_ITEM:
       return {
         ...state,
-        percent: action.percent
+        percent: action.percent,
       };
     default:
       return state;

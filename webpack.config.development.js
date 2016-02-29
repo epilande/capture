@@ -13,7 +13,7 @@ config.devtool = 'eval';
 
 config.entry = [
   'webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr',
-  './app/index'
+  './app/index',
 ];
 
 config.output.publicPath = 'http://localhost:3000/dist/';
@@ -23,22 +23,22 @@ config.module.loaders.push({
   loaders: [
     'style-loader',
     'css-loader?sourceMap',
-    'postcss-loader'
-  ]
+    'postcss-loader',
+  ],
 }, {
   test: /^((?!\.global).)*\.css$/,
   loaders: [
     'style-loader',
     'css-loader?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
-    'postcss-loader'
-  ]
+    'postcss-loader',
+  ],
 });
 
 config.postcss = function postcss() {
   return [
     require('postcss-modules-values'),
     require('postcss-nested'),
-    require('rucksack-css')
+    require('rucksack-css'),
   ];
 };
 
@@ -46,10 +46,10 @@ config.plugins.push(
   new webpack.HotModuleReplacementPlugin(),
   new webpack.NoErrorsPlugin(),
   new webpack.DefinePlugin({
-    '__DEV__': true,
+    __DEV__: true,
     'process.env': {
-      'NODE_ENV': JSON.stringify('development')
-    }
+      NODE_ENV: JSON.stringify('development'),
+    },
   })
 );
 

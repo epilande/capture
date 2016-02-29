@@ -1,3 +1,4 @@
+/* eslint max-len: 0 */
 import React, { PropTypes } from 'react';
 
 const Gear = ({ className, size = 20, fill = '#ccc', opacity = 0.5, onClick }) => (
@@ -13,7 +14,7 @@ Gear.propTypes = {
   size: PropTypes.number,
   fill: PropTypes.string,
   opacity: PropTypes.number,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
 };
 
 export default Gear;

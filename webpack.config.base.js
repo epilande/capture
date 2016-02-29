@@ -13,27 +13,27 @@ module.exports = {
         test: /\.jsx?$/,
         loaders: [
           'babel-loader',
-          'eslint-loader'
+          'eslint-loader',
         ],
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.json$/,
-        loader: 'json-loader'
-      }
-    ]
+        loader: 'json-loader',
+      },
+    ],
   },
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    libraryTarget: 'commonjs2'
+    libraryTarget: 'commonjs2',
   },
   resolve: {
     root: path.resolve('app'),
     modulesDirectories: ['node_modules'],
     extensions: ['', '.js', '.jsx'],
-    packageMains: ['webpack', 'browser', 'web', 'browserify', ['jam', 'main'], 'main']
+    packageMains: ['webpack', 'browser', 'web', 'browserify', ['jam', 'main'], 'main'],
   },
   plugins: [],
-  externals: nodeModules
+  externals: nodeModules,
 };

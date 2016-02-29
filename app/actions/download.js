@@ -26,6 +26,6 @@ export function progress(percent, debounce = 50) {
   return {
     type: PROGRESS_ITEM,
     percent,
-    meta: { debounce: { time: debounce } }
+    meta: { debounce: { time: debounce } },
   };
 }
