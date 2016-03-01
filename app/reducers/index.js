@@ -4,7 +4,7 @@ import settings from './settings';
 
 const rootReducer = combineReducers({
   download,
-  settings
+  settings,
 });
 
 export default rootReducer;
