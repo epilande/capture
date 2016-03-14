@@ -37,8 +37,9 @@ config.module.loaders.push({
 config.postcss = function postcss() {
   return [
     require('postcss-modules-values'),
+    require('postcss-import'),
     require('postcss-nested'),
-    require('rucksack-css'),
+    require('postcss-cssnext')({ browsers: ['last 2 versions', 'IE > 10'] }),
   ];
 };
 
