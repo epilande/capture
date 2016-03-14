@@ -6,7 +6,7 @@ import routes from 'routes';
 import configureStore from 'store/configureStore';
 import { setOutputDir } from 'actions/settings';
 import { ipcRenderer } from 'electron';
-import 'app.global.css';
+import 'styles/app';
 
 const store = configureStore();
 

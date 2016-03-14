@@ -46,7 +46,7 @@ config.plugins.push(
       warnings: false,
     },
   }),
-  new ExtractTextPlugin('style.css', { allChunks: true })
+  new ExtractTextPlugin('styles.css', { allChunks: true })
 );
 
 config.target = webpackTargetElectronRenderer(config);
