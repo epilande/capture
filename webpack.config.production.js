@@ -16,13 +16,7 @@ config.entry = './app/index';
 config.output.publicPath = '../dist/';
 
 config.module.loaders.push({
-  test: /\.global\.css$/,
-  loader: ExtractTextPlugin.extract(
-    'style-loader',
-    'css-loader!postcss-loader'
-  ),
-}, {
-  test: /^((?!\.global).)*\.css$/,
+  test: /\.css$/,
   loader: ExtractTextPlugin.extract(
     'style-loader',
     'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader', // eslint-disable-line
