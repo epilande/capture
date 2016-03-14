@@ -30,7 +30,7 @@ module.exports = {
   resolve: {
     root: path.resolve('app'),
     modulesDirectories: ['node_modules'],
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['', '.js', '.jsx', '.css'],
     packageMains: ['webpack', 'browser', 'web', 'browserify', ['jam', 'main'], 'main'],
   },
   plugins: [],
