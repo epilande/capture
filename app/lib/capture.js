@@ -15,7 +15,8 @@ export function init(url, options = [], callback) {
 
 export function download(video, output, callback) {
   video.on('info', (info) => {
-    const file = path.resolve(output, `${info.title}.mp4`);
+    const filename = info.title.replace(/[^a-z0-9\_\-\ ]/gi, '');
+    const file = path.resolve(output, `${filename}.mp4`);
     video.pipe(fs.createWriteStream(file));
 
     return callback(info);
