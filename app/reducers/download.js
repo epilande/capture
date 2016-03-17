@@ -13,6 +13,7 @@ export default function reducer(state = initialState, action = {}) {
           {
             id: action.id,
             url: action.url,
+            info: action.info,
           },
         ],
       };

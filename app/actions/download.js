@@ -10,8 +10,7 @@ export function download(url, options, output) {
     console.log('download params: ', url, options, output, downloadId);
     capture.init(url, options, (video) => {
       capture.download(video, output, (info) => {
-        dispatch(addItem(downloadId, url));
-        console.log(info);
+        dispatch(addItem(downloadId, url, info));
         capture.progress(video, info.size, (percent) => {
           dispatch(progress(downloadId, percent));
         });
@@ -20,8 +19,8 @@ export function download(url, options, output) {
   };
 }
 
-export function addItem(id, url) {
-  return { type: ADD_ITEM, id, url };
+export function addItem(id, url, info) {
+  return { type: ADD_ITEM, id, url, info };
 }
 
 export function progress(id, percent, debounce = 50) {
