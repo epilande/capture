@@ -9,3 +9,8 @@
   border-bottom: 1px solid #eef3f5;
   background: #fff;
 }
+
+.progress {
+  float: right;
+  color: color(#333 alpha(-50%));
+}

@@ -8,7 +8,10 @@ const List = ({ items }) => {
       title = item.info.title;
     }
     return (
-      <li className={styles.item} key={item.id}>{title} {item.percent}</li>
+      <li className={styles.item} key={item.id}>
+        {title}
+        <span className={styles.progress}>{item.percent}</span>
+      </li>
     );
   });
 
