@@ -11,15 +11,20 @@ export default function reducer(state = initialState, action = {}) {
         items: [
           ...state.items,
           {
-            id: state.items.reduce((maxId, item) => Math.max(item.id, maxId), -1) + 1,
+            id: action.id,
             url: action.url,
           },
         ],
       };
     case PROGRESS_ITEM:
       return {
-        ...state,
-        percent: action.percent,
+        items: state.items.map(item => {
+          let result;
+          if (item.id === action.id) {
+            result = { ...item, percent: action.percent };
+          }
+          return result || item;
+        }),
       };
     default:
       return state;
