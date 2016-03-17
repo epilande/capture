@@ -59,7 +59,7 @@ class Home extends Component {
   }
 
   render() {
-    const { download: { items } } = this.props;
+    const { download: { items }, settings: { output } } = this.props;
 
     return (
       <div className={styles.base}>
@@ -79,6 +79,9 @@ class Home extends Component {
           />
           <p className={styles.inputError}>
             { !this.state.inputValid ? 'Url is invalid' : ''}
+          </p>
+          <p className={styles.outputDir}>
+            output: { output }
           </p>
         </div>
         <List items={items} />

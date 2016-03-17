@@ -35,3 +35,11 @@
   right: 25px;
   cursor: pointer;
 }
+
+.outputDir {
+  position: absolute;
+  bottom: -1.5rem;
+  right: 1rem;
+  font-size: .75rem;
+  color: color(#777 alpha(-50%));
+}
