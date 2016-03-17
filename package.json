@@ -1,6 +1,6 @@
 {
-  "name": "capture",
-  "version": "0.0.0",
+  "name": "Capture",
+  "version": "0.1.0",
   "description": "Application to download music & videos",
   "main": "main.js",
   "scripts": {
