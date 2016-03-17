@@ -5,13 +5,12 @@ export const PROGRESS_ITEM = 'PROGRESS_ITEM';
 
 export function download(url, options, output) {
   return (dispatch, getState) => {
-    const downloadState = getState().download;
-    const downloadId = downloadState.items.reduce((maxId, item) =>
-                                                  Math.max(item.id, maxId), -1) + 1;
-    console.log('download: ', url, options, output, downloadId);
-    dispatch(addItem(downloadId, url));
+    const { download: { items } } = getState();
+    const downloadId = items.reduce((maxId, item) => Math.max(item.id, maxId), -1) + 1;
+    console.log('download params: ', url, options, output, downloadId);
     capture.init(url, options, (video) => {
       capture.download(video, output, (info) => {
+        dispatch(addItem(downloadId, url));
         console.log(info);
         capture.progress(video, info.size, (percent) => {
           dispatch(progress(downloadId, percent));
