@@ -13,6 +13,7 @@ class Home extends Component {
     dispatch: PropTypes.func.isRequired,
     settings: PropTypes.shape({
       output: PropTypes.string,
+      quality: PropTypes.string,
     }),
     download: PropTypes.object,
   };
@@ -41,8 +42,8 @@ class Home extends Component {
 
     if (event.which === 13 && url) {
       if (validUrl(url)) {
-        const { output } = this.props.settings;
-        this.props.dispatch(download(url, null, output));
+        const { output, quality } = this.props.settings;
+        this.props.dispatch(download(url, { quality }, output));
         this.setState({ inputValue: '' });
       } else {
         this.setState({ inputValid: false });

@@ -3,7 +3,8 @@ import fs from 'fs';
 import path from 'path';
 import ytdl from 'youtube-dl';
 
-export function init(url, options = [], callback) {
+export function init(url, settings = {}, callback) {
+  const options = [`--format=${settings.quality}`];
   const video = ytdl(url, options, { cwd: __dirname });
 
   video.on('error', (err) => {

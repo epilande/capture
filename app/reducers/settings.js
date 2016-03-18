@@ -3,7 +3,7 @@ import { OUTPUT_DIR } from 'actions/settings';
 const initialState = {
   output: '',
   format: '',
-  quality: '',
+  quality: 'best',
 };
 
 export default function reducer(state = initialState, action = {}) {
