@@ -22,6 +22,7 @@ class Home extends Component {
     this._onInputChange = this._onInputChange.bind(this);
     this._onInputEnter = this._onInputEnter.bind(this);
     this._setOutput = this._setOutput.bind(this);
+    this._openOutput = this._openOutput.bind(this);
     this.state = {
       inputValue: '',
       inputValid: true,
@@ -58,6 +59,13 @@ class Home extends Component {
     }
   }
 
+  _openOutput() {
+    const shell = require('electron').shell;
+    const { settings: { output } } = this.props;
+
+    shell.showItemInFolder(output);
+  }
+
   render() {
     const { download: { items }, settings: { output } } = this.props;
 
@@ -80,7 +88,7 @@ class Home extends Component {
           <p className={styles.inputError}>
             { !this.state.inputValid ? 'Url is invalid' : ''}
           </p>
-          <p className={styles.outputDir}>
+          <p className={styles.outputDir} onClick={this._openOutput}>
             output: { output }
           </p>
         </div>

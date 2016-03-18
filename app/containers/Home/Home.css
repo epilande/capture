@@ -43,4 +43,5 @@
   right: 1rem;
   font-size: .75rem;
   color: color(#777 alpha(-50%));
+  cursor: pointer;
 }
