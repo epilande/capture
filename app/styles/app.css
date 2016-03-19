@@ -4,4 +4,5 @@
 
   /* Global styles */
   @import 'styles/global/_base';
+  @import 'styles/global/_heading';
 }
