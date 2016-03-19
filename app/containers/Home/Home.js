@@ -22,11 +22,14 @@ class Home extends Component {
     super();
     this._onInputChange = this._onInputChange.bind(this);
     this._onInputEnter = this._onInputEnter.bind(this);
+    this._openSettings = this._openSettings.bind(this);
+    this._closeSettings = this._closeSettings.bind(this);
     this._setOutput = this._setOutput.bind(this);
     this._openOutput = this._openOutput.bind(this);
     this.state = {
       inputValue: '',
       inputValid: true,
+      openSettings: false,
     };
   }
 
@@ -49,6 +52,14 @@ class Home extends Component {
         this.setState({ inputValid: false });
       }
     }
+  }
+
+  _openSettings() {
+    this.setState({ openSettings: true });
+  }
+
+  _closeSettings() {
+    this.setState({ openSettings: false });
   }
 
   _setOutput() {
@@ -84,7 +95,7 @@ class Home extends Component {
             className={styles.gear}
             fill="#333"
             opacity={0.25}
-            onClick={this._setOutput}
+            onClick={this._openSettings}
           />
           <p className={styles.inputError}>
             { !this.state.inputValid ? 'Url is invalid' : ''}
