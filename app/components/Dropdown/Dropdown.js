@@ -2,17 +2,15 @@ import React, { PropTypes } from 'react';
 import styles from './Dropdown.css';
 
 const Dropdown = ({ className, name, items, value, onChange }) => (
-  <div className={styles.base}>
-    <select name={name}
-      className={className}
-      value={value}
-      onChange={onChange}
-    >
-      {items.map(item => (
-        <option value={item.value}>{item.text}</option>
-      ))}
-    </select>
-  </div>
+  <select name={name}
+    className={`${className} ${styles.base}`}
+    value={value}
+    onChange={onChange}
+  >
+    {items.map(item => (
+      <option value={item.value}>{item.text}</option>
+    ))}
+  </select>
 );
 
 Dropdown.defaultProps = {
