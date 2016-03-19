@@ -24,4 +24,7 @@
   top: 1rem;
   right: 1rem;
   cursor: pointer;
+  &:hover g {
+    opacity: 0.35;
+  }
 }

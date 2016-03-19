@@ -35,6 +35,9 @@
   top: 25px;
   right: 25px;
   cursor: pointer;
+  &:hover path {
+    opacity: 0.35;
+  }
 }
 
 .outputDir {
@@ -44,4 +47,7 @@
   font-size: .75rem;
   color: color(#777 alpha(-50%));
   cursor: pointer;
+  &:hover {
+    color: color(#777 alpha(-30%));
+  }
 }
