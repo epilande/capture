@@ -85,7 +85,7 @@ class Home extends Component {
     let settingsModal;
     if (this.state.openSettings) {
       settingsModal = (
-        <Modal onClose={this._closeSettings}>
+        <Modal close={this._closeSettings}>
           <div>
             Hello World.
           </div>
