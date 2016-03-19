@@ -1,3 +1,11 @@
 h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
+  margin-bottom: .5rem;
+  color: color(#000 alpha(-25%));
+}
+
+h1, h2 {
+  border-bottom: 1px solid color(#333 alpha(-70%));
+  margin-top: 1px;
+  padding-bottom: .5rem;
 }
