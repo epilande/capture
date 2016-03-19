@@ -6,6 +6,7 @@ import styles from './Home.css';
 import Input from 'components/Input';
 import List from 'components/List';
 import Modal from 'components/Modal';
+import Dropdown from 'components/Dropdown';
 import Gear from 'components/icons/Gear';
 import { validUrl } from 'utils/validation';
 
@@ -85,9 +86,20 @@ class Home extends Component {
     let settingsModal;
     if (this.state.openSettings) {
       settingsModal = (
-        <Modal close={this._closeSettings}>
+        <Modal className={styles.modal} close={this._closeSettings}>
           <div>
-            Hello World.
+            <h2>Settings</h2>
+            <div className={styles.output}>
+              <h3>Output</h3>
+              <Input
+                className={styles.input}
+                value={output}
+                disabled={true}
+              />
+              <button>Change ...</button>
+            </div>
+            <h3>Quality</h3>
+            <Dropdown />
           </div>
         </Modal>
       );
