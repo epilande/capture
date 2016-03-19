@@ -5,6 +5,7 @@ import { setOutputDir } from 'actions/settings';
 import styles from './Home.css';
 import Input from 'components/Input';
 import List from 'components/List';
+import Modal from 'components/Modal';
 import Gear from 'components/icons/Gear';
 import { validUrl } from 'utils/validation';
 
@@ -81,6 +82,17 @@ class Home extends Component {
   render() {
     const { download: { items }, settings: { output } } = this.props;
 
+    let settingsModal;
+    if (this.state.openSettings) {
+      settingsModal = (
+        <Modal onClose={this._closeSettings}>
+          <div>
+            Hello World.
+          </div>
+        </Modal>
+      );
+    }
+
     return (
       <div className={styles.base}>
         <div className={styles.inputContainer}>
@@ -105,6 +117,7 @@ class Home extends Component {
           </p>
         </div>
         <List items={items} />
+        {settingsModal}
       </div>
     );
   }
