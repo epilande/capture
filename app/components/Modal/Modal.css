@@ -18,3 +18,10 @@
   padding: 1rem;
   box-shadow: 0 1px 3px 0 color(#000 alpha(-80%));
 }
+
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
+}
