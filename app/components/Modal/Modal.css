@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: color(#000 alpha(-80%));
+  background: color(#000 alpha(-50%));
 }
 
 .main {
@@ -13,16 +13,16 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #eef3f5;
-  width: 50%;
+  width: 100%;
   max-width: 550px;
-  padding: 1rem;
+  padding: 1.5rem;
   box-shadow: 0 1px 3px 0 color(#000 alpha(-80%));
 }
 
 .close {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
+  top: 1.5rem;
+  right: 1.5rem;
   cursor: pointer;
   &:hover g {
     opacity: 0.35;
