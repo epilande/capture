@@ -2,8 +2,8 @@ import React, { PropTypes } from 'react';
 import Close from 'components/icons/X';
 import styles from './Modal.css';
 
-const Modal = ({ children, close }) => (
-  <div className={styles.base}>
+const Modal = ({ children, className, close }) => (
+  <div className={className}>
     <div className={styles.overlay}></div>
     <div className={styles.main}>
       <Close
@@ -23,6 +23,7 @@ Modal.defaultProps = {
 
 Modal.propTypes = {
   children: PropTypes.element.isRequired,
+  className: PropTypes.string,
   close: PropTypes.func.isRequired,
 };
 
