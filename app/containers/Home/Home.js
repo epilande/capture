@@ -97,14 +97,14 @@ class Home extends Component {
         <Modal className={styles.modal} close={this._closeSettings}>
           <div>
             <h2>Settings</h2>
-            <div className={styles.output}>
-              <h3>Output</h3>
+            <h3>Output</h3>
+            <div className={styles.outputInput}>
               <Input
                 className={styles.input}
                 value={output}
                 disabled={true}
               />
-              <button>Change ...</button>
+              <button onClick={this._setOutput}>Change...</button>
             </div>
             <h3>Quality</h3>
             <Dropdown
