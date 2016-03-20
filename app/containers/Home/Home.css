@@ -77,9 +77,10 @@
     background: #fff;
     font-size: 1rem;
     cursor: pointer;
-    transition: color .25s;
+    color: #777;
+    transition: color .2s;
     &:hover {
-      color: #f1404b;
+      color: #000;
     }
   }
 }
