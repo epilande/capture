@@ -10,7 +10,7 @@ const List = ({ items }) => {
     return (
       <li className={styles.item} key={item.id}>
         {title}
-        <span className={styles.progress}>{item.percent}</span>
+        <span className={styles.progress}>{item.percent}%</span>
       </li>
     );
   });
