@@ -1,7 +1,8 @@
 # Capture
+> Simple video downloader
 
 
-## Quick Start
+## Development
 
   1. Install NPM modules.
 
@@ -9,14 +10,8 @@
   $ npm install
   ```
 
-  2. Start local server & webpack.
+  2. Start local server, webpack, & electron.
 
   ```bash
-  $ npm run hot-server
-  ```
-
-  3. Start electron.
-
-  ```bash
-  $ npm run start-hot
+  $ npm run dev
   ```
