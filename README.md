@@ -1,6 +1,7 @@
 # Capture
 > Simple video downloader
 
+![Capture](screenshot.png)
 
 ## Development
 
