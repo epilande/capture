@@ -1,13 +1,10 @@
 {
   "name": "Capture",
   "version": "0.1.0",
-  "description": "Application to download music & videos",
+  "description": "Application to download videos",
   "main": "main.js",
   "scripts": {
-    "test": "better-npm-run test",
-    "test-watch": "npm test -- --watch",
-    "test-e2e": "better-npm-run test-e2e",
-    "lint": "eslint app test *.js",
+    "lint": "eslint app *.js",
     "hot-server": "node server.js",
     "build": "better-npm-run build",
     "start": "better-npm-run start",
@@ -42,18 +39,6 @@
       "env": {
         "NODE_ENV": "production"
       }
-    },
-    "test": {
-      "command": "mocha --compilers js:babel-core/register --recursive --require ./test/setup.js test/**/*.spec.js",
-      "env": {
-        "NODE_ENV": "test"
-      }
-    },
-    "test-e2e": {
-      "command": "mocha --compilers js:babel-core/register --require ./test/setup.js --require co-mocha ./test/e2e.js",
-      "env": {
-        "NODE_ENV": "test"
-      }
     }
   },
   "bin": {
@@ -82,9 +67,7 @@
     "babel-preset-react-hmre": "^1.0.1",
     "babel-preset-stage-0": "^6.3.13",
     "better-npm-run": "0.0.5",
-    "chai": "^3.3.0",
     "chromedriver": "^2.19.0",
-    "co-mocha": "^1.1.2",
     "css-loader": "^0.23.1",
     "css-modules-require-hook": "^2.0.2",
     "del": "^2.0.1",
@@ -100,20 +83,16 @@
     "jsdom": "^7.2.2",
     "json-loader": "^0.5.4",
     "minimist": "^1.2.0",
-    "mocha": "^2.3.0",
     "node-libs-browser": ">= 0.4.0 <=0.6.0",
     "postcss-cssnext": "^2.5.1",
     "postcss-import": "^8.0.2",
     "postcss-loader": "^0.8.1",
     "postcss-modules-values": "^1.1.1",
     "postcss-nested": "^1.0.0",
-    "react-addons-test-utils": "^0.14.2",
     "redux-devtools": "^3.0.1",
     "redux-devtools-dock-monitor": "^1.0.1",
     "redux-devtools-log-monitor": "^1.0.1",
     "redux-logger": "^2.3.1",
-    "selenium-webdriver": "^2.48.2",
-    "sinon": "^1.17.2",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.1",
     "webpack-dev-middleware": "^1.2.0",
@@ -123,7 +102,6 @@
   },
   "dependencies": {
     "electron-debug": "^0.5.1",
-    "font-awesome": "^4.4.0",
     "history": "^1.17.0",
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
