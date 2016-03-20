@@ -7,8 +7,8 @@ const Dropdown = ({ className, name, items, value, onChange }) => (
     value={value}
     onChange={onChange}
   >
-    {items.map(item => (
-      <option value={item.value}>{item.text}</option>
+    {items.map((item, i) => (
+      <option key={i} value={item.value}>{item.text}</option>
     ))}
   </select>
 );
