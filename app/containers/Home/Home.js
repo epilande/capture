@@ -81,7 +81,7 @@ class Home extends Component {
   }
 
   render() {
-    const { download: { items }, settings: { output } } = this.props;
+    const { download: { items }, settings: { output, qualityOption } } = this.props;
 
     let settingsModal;
     if (this.state.openSettings) {
@@ -99,7 +99,9 @@ class Home extends Component {
               <button>Change ...</button>
             </div>
             <h3>Quality</h3>
-            <Dropdown />
+            <Dropdown
+              items={qualityOption}
+            />
           </div>
         </Modal>
       );
