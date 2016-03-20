@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { download } from 'actions/download';
-import { setOutputDir } from 'actions/settings';
+import { setOutputDir, changeQuality } from 'actions/settings';
 import styles from './Home.css';
 import Input from 'components/Input';
 import List from 'components/List';
@@ -26,6 +26,7 @@ class Home extends Component {
     this._onInputEnter = this._onInputEnter.bind(this);
     this._openSettings = this._openSettings.bind(this);
     this._closeSettings = this._closeSettings.bind(this);
+    this._changeQuality = this._changeQuality.bind(this);
     this._setOutput = this._setOutput.bind(this);
     this._openOutput = this._openOutput.bind(this);
     this.state = {
@@ -62,6 +63,10 @@ class Home extends Component {
 
   _closeSettings() {
     this.setState({ openSettings: false });
+  }
+
+  _changeQuality(event) {
+    this.props.dispatch(changeQuality(event.target.value));
   }
 
   _setOutput() {
@@ -105,6 +110,7 @@ class Home extends Component {
             <Dropdown
               items={qualityOption}
               selected={quality}
+              onChange={this._changeQuality}
             />
           </div>
         </Modal>
