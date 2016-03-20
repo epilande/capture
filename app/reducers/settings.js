@@ -1,4 +1,4 @@
-import { OUTPUT_DIR } from 'actions/settings';
+import { OUTPUT_DIR, CHANGE_QUALITY } from 'actions/settings';
 
 const initialState = {
   output: '',
@@ -27,6 +27,11 @@ export default function reducer(state = initialState, action = {}) {
       return {
         ...state,
         output: action.output,
+      };
+    case CHANGE_QUALITY:
+      return {
+        ...state,
+        quality: action.quality,
       };
     default:
       return state;
