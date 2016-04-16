@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { validUrl } from 'utils/validation';
 
 class Input extends Component {
   static propTypes = {
@@ -24,9 +25,23 @@ class Input extends Component {
   }
 
   onChange(event) {
+    this.setState({
+      value: event.target.value,
+      valid: true,
+    });
   }
 
   onEnter(event) {
+    const url = event.target.value.trim();
+
+    if (event.which === 13 && url) {
+      if (validUrl(url)) {
+        this.props.onEnter(url);
+        this.setState({ value: '' });
+      } else {
+        this.setState({ valid: false });
+      }
+    }
   }
 
   render() {
@@ -36,6 +51,8 @@ class Input extends Component {
     return (
       <div>
         <input
+          onChange={this.onChange}
+          onKeyDown={this.onEnter}
           value={value}
           {...props}
         />

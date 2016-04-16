@@ -20,9 +20,8 @@ class Home extends Component {
     download: PropTypes.object,
   };
 
-  constructor() {
-    super();
-    this._onInputChange = this._onInputChange.bind(this);
+  constructor(props) {
+    super(props);
     this._onInputEnter = this._onInputEnter.bind(this);
     this._openSettings = this._openSettings.bind(this);
     this._closeSettings = this._closeSettings.bind(this);
@@ -30,31 +29,13 @@ class Home extends Component {
     this._setOutput = this._setOutput.bind(this);
     this._openOutput = this._openOutput.bind(this);
     this.state = {
-      inputValue: '',
-      inputValid: true,
       openSettings: false,
     };
   }
 
-  _onInputChange(event) {
-    this.setState({
-      inputValue: event.target.value,
-      inputValid: true,
-    });
-  }
-
-  _onInputEnter(event) {
-    const url = event.target.value.trim();
-
-    if (event.which === 13 && url) {
-      if (validUrl(url)) {
-        const { output, quality } = this.props.settings;
-        this.props.dispatch(download(url, { quality }, output));
-        this.setState({ inputValue: '' });
-      } else {
-        this.setState({ inputValid: false });
-      }
-    }
+  _onInputEnter(url) {
+    const { output, quality } = this.props.settings;
+    this.props.dispatch(download(url, { quality }, output));
   }
 
   _openSettings() {
@@ -121,11 +102,8 @@ class Home extends Component {
       <div className={styles.base}>
         <div className={styles.inputContainer}>
           <Input
-            className={styles.input}
             placeholder="URL to capture"
-            onChange={this._onInputChange}
-            onKeyDown={this._onInputEnter}
-            value={this.state.inputValue}
+            onEnter={this._onInputEnter}
           />
           <Gear
             className={styles.gear}
