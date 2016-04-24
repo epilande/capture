@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { validUrl } from 'utils/validation';
+import styles from './Input.css';
 
 class Input extends Component {
   static propTypes = {
@@ -67,6 +68,7 @@ class Input extends Component {
     return (
       <div>
         <input
+          className={styles.input}
           onChange={this.onChange}
           onKeyDown={this.onKeyDown}
           value={value}
