@@ -13,10 +13,14 @@ class Input extends Component {
     onKeyDown: PropTypes.func,
   };
 
+  static defaultProps = {
+    type: 'text',
+  };
+
   constructor(props) {
     super(props);
     this.onChange = this.onChange.bind(this);
-    this.onEnter = this.onEnter.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
 
     this.state = {
       value: props.value || '',
@@ -25,21 +29,33 @@ class Input extends Component {
   }
 
   onChange(event) {
-    this.setState({
-      value: event.target.value,
-      valid: true,
-    });
+    const { onChange } = this.props;
+
+    if (onChange) {
+      onChange(event);
+    } else {
+      this.setState({
+        value: event.target.value,
+        valid: true,
+      });
+    }
   }
 
-  onEnter(event) {
-    const url = event.target.value.trim();
+  onKeyDown(event) {
+    const { onKeyDown } = this.props;
 
-    if (event.which === 13 && url) {
-      if (validUrl(url)) {
-        this.props.onEnter(url);
-        this.setState({ value: '' });
-      } else {
-        this.setState({ valid: false });
+    if (onKeyDown) {
+      onKeyDown(event);
+    } else {
+      const url = event.target.value.trim();
+
+      if (event.which === 13 && url) {
+        if (validUrl(url)) {
+          this.props.onEnter(url);
+          this.setState({ value: '' });
+        } else {
+          this.setState({ valid: false });
+        }
       }
     }
   }
@@ -52,7 +68,7 @@ class Input extends Component {
       <div>
         <input
           onChange={this.onChange}
-          onKeyDown={this.onEnter}
+          onKeyDown={this.onKeyDown}
           value={value}
           {...props}
         />
