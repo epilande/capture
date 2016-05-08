@@ -30,33 +30,21 @@ class Input extends Component {
   }
 
   onChange(event) {
-    const { onChange } = this.props;
-
-    if (onChange) {
-      onChange(event);
-    } else {
-      this.setState({
-        value: event.target.value,
-        valid: true,
-      });
-    }
+    this.setState({
+      value: event.target.value,
+      valid: true,
+    });
   }
 
   onKeyDown(event) {
-    const { onKeyDown } = this.props;
+    const url = event.target.value.trim();
 
-    if (onKeyDown) {
-      onKeyDown(event);
-    } else {
-      const url = event.target.value.trim();
-
-      if (event.which === 13 && url) {
-        if (validUrl(url)) {
-          this.props.onEnter(url);
-          this.setState({ value: '' });
-        } else {
-          this.setState({ valid: false });
-        }
+    if (event.which === 13 && url) {
+      if (validUrl(url)) {
+        this.props.onEnter(url);
+        this.setState({ value: '' });
+      } else {
+        this.setState({ valid: false });
       }
     }
   }
