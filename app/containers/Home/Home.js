@@ -23,8 +23,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this._onInputEnter = this._onInputEnter.bind(this);
-    this._openSettings = this._openSettings.bind(this);
-    this._closeSettings = this._closeSettings.bind(this);
+    this._toggleSettings = this._toggleSettings.bind(this);
     this._changeQuality = this._changeQuality.bind(this);
     this._setOutput = this._setOutput.bind(this);
     this._openOutput = this._openOutput.bind(this);
@@ -38,12 +37,8 @@ class Home extends Component {
     this.props.dispatch(download(url, { quality }, output));
   }
 
-  _openSettings() {
-    this.setState({ openSettings: true });
-  }
-
-  _closeSettings() {
-    this.setState({ openSettings: false });
+  _toggleSettings() {
+    this.setState({ openSettings: !this.state.openSettings });
   }
 
   _changeQuality(event) {
@@ -75,7 +70,7 @@ class Home extends Component {
     let settingsModal;
     if (this.state.openSettings) {
       settingsModal = (
-        <Modal className={styles.modal} close={this._closeSettings}>
+        <Modal className={styles.modal} close={this._toggleSettings}>
           <div>
             <h2>Settings</h2>
             <h3>Output</h3>
@@ -108,7 +103,7 @@ class Home extends Component {
             className={styles.gear}
             fill="#333"
             opacity={0.25}
-            onClick={this._openSettings}
+            onClick={this._toggleSettings}
           />
           <p className={styles.outputDir} onClick={this._openOutput}>
             output: { output }
