@@ -81,7 +81,6 @@ class Home extends Component {
             <h3>Output</h3>
             <div className={styles.outputInput}>
               <Input
-                className={styles.input}
                 value={output}
                 disabled={true}
               />
