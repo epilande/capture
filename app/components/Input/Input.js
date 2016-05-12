@@ -63,7 +63,14 @@ class Input extends Component {
 
   render() {
     const { ...props } = this.props;
-    const { value } = this.state;
+    const { value, valid } = this.state;
+
+    let errors;
+    if (!valid) {
+      errors = (
+        <p className={styles.inputError}> Url is invalid </p>
+      );
+    }
 
     return (
       <div>
@@ -74,6 +81,7 @@ class Input extends Component {
           value={value}
           {...props}
         />
+        {errors}
       </div>
     );
   }

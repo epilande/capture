@@ -11,3 +11,11 @@
     color: color(#777 alpha(-50%));
   }
 }
+
+.inputError {
+  position: absolute;
+  right: 1rem;
+  top: -1.5rem;
+  color: #f1404b;
+  font-weight: 600;
+}

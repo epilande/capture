@@ -110,9 +110,6 @@ class Home extends Component {
             opacity={0.25}
             onClick={this._openSettings}
           />
-          <p className={styles.inputError}>
-            { !this.state.inputValid ? 'Url is invalid' : ''}
-          </p>
           <p className={styles.outputDir} onClick={this._openOutput}>
             output: { output }
           </p>
