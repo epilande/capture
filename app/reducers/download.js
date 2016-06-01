@@ -8,6 +8,7 @@ export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case ITEM_ADD:
       return {
+        ...state,
         items: [
           ...state.items,
           {
@@ -24,6 +25,7 @@ export default function reducer(state = initialState, action = {}) {
       };
     case ITEM_PROGRESS:
       return {
+        ...state,
         items: state.items.map(item => {
           let result;
           if (item.id === action.id) {

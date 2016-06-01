@@ -9,6 +9,7 @@ export function download(url, options, output) {
     const { download: { items } } = getState();
     const downloadId = items.reduce((maxId, item) => Math.max(item.id, maxId), -1) + 1;
     console.log('download params: ', url, options, output, downloadId);
+    dispatch(itemFail(''));
     capture.init(url, options, (err, video) => {
       if (err) {
         dispatch(itemFail('Download not available, please try a different URL.'));
