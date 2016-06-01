@@ -1,4 +1,4 @@
-import { ITEM_ADD, ITEM_PROGRESS } from 'actions/download';
+import { ITEM_ADD, ITEM_FAIL, ITEM_PROGRESS } from 'actions/download';
 
 const initialState = {
   items: [],
@@ -16,6 +16,11 @@ export default function reducer(state = initialState, action = {}) {
             info: action.info,
           },
         ],
+      };
+    case ITEM_FAIL:
+      return {
+        ...state,
+        error:  action.error,
       };
     case ITEM_PROGRESS:
       return {
