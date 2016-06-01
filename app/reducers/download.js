@@ -1,4 +1,4 @@
-import { ADD_ITEM, PROGRESS_ITEM } from 'actions/download';
+import { ITEM_ADD, ITEM_FAIL, ITEM_PROGRESS } from 'actions/download';
 
 const initialState = {
   items: [],
@@ -6,8 +6,9 @@ const initialState = {
 
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
-    case ADD_ITEM:
+    case ITEM_ADD:
       return {
+        ...state,
         items: [
           ...state.items,
           {
@@ -17,8 +18,14 @@ export default function reducer(state = initialState, action = {}) {
           },
         ],
       };
-    case PROGRESS_ITEM:
+    case ITEM_FAIL:
       return {
+        ...state,
+        error:  action.error,
+      };
+    case ITEM_PROGRESS:
+      return {
+        ...state,
         items: state.items.map(item => {
           let result;
           if (item.id === action.id) {

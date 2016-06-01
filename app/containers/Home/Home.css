@@ -21,6 +21,13 @@
   }
 }
 
+.downloadErr {
+  padding: 1rem;
+  color: color(#f54b4b alpha(80%));
+  text-align: center;
+  font-weight: 600;
+}
+
 .outputDir {
   position: absolute;
   bottom: -1.5rem;

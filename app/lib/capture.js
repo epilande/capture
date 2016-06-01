@@ -9,9 +9,10 @@ export function init(url, settings = {}, callback) {
 
   video.on('error', (err) => {
     console.log(err);
+    return callback(err, video);
   });
 
-  return callback(video);
+  return callback(null, video);
 }
 
 export function download(video, output, callback) {
