@@ -16,6 +16,6 @@
   position: absolute;
   right: 1rem;
   top: -1.5rem;
-  color: #f1404b;
+  color: color(#f54b4b alpha(80%));
   font-weight: 600;
 }

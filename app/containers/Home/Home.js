@@ -63,7 +63,7 @@ class Home extends Component {
 
   render() {
     const {
-      download: { items },
+      download: { items, error },
       settings: { output, quality, qualityOption },
     } = this.props;
 
@@ -92,6 +92,11 @@ class Home extends Component {
       );
     }
 
+    let errorMarkup;
+    if (error) {
+      errorMarkup = <p className={styles.downloadErr}>{error}</p>;
+    }
+
     return (
       <div className={styles.base}>
         <div className={styles.inputContainer}>
@@ -110,6 +115,7 @@ class Home extends Component {
           </p>
         </div>
         <List items={items} />
+        {errorMarkup}
         {settingsModal}
       </div>
     );
