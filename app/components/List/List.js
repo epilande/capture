@@ -7,11 +7,19 @@ const List = ({ items }) => {
     if (item.info && item.info.title) {
       title = item.info.title;
     }
+
+    let progressBar;
+    if (item.percent < 100) {
+      progressBar = (
+        <span className={styles.progressBar} style={{width: `${item.percent}%`}} />
+      );
+    }
+
     return (
       <li className={styles.item} key={item.id}>
         <span className={styles.title}>{title}</span>
         <span className={styles.progress}>{item.percent}%</span>
-        <span className={styles.progressBar} style={{width: `${item.percent}%`}}></span>
+        {progressBar}
       </li>
     );
   });
