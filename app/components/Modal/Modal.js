@@ -23,7 +23,9 @@ class Modal extends Component {
   }
 
   handleEsc(event) {
-    this.props.close();
+    if (event.keyCode == 27) {
+      this.props.close();
+    }
   }
 
   render() {
