@@ -11,6 +11,7 @@ const List = ({ items }) => {
       <li className={styles.item} key={item.id}>
         <span className={styles.title}>{title}</span>
         <span className={styles.progress}>{item.percent}%</span>
+        <span className={styles.progressBar} style={{width: `${item.percent}%`}}></span>
       </li>
     );
   });
