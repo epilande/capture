@@ -1,30 +1,37 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Close from 'components/icons/X';
 import styles from './Modal.css';
 
-const Modal = ({ children, className, close }) => (
-  <div className={className}>
-    <div className={styles.overlay}></div>
-    <div className={styles.main}>
-      <Close
-        className={styles.close}
-        fill="#333"
-        opacity={0.25}
-        size={20}
-        onClick={close}
-      />
-      {children}
-    </div>
-  </div>
-);
+class Modal extends Component {
+  static propTypes = {
+    children: PropTypes.element.isRequired,
+    className: PropTypes.string,
+    close: PropTypes.func.isRequired,
+  };
 
-Modal.defaultProps = {
-};
+  constructor(props) {
+    super(props);
+  }
 
-Modal.propTypes = {
-  children: PropTypes.element.isRequired,
-  className: PropTypes.string,
-  close: PropTypes.func.isRequired,
-};
+  render() {
+    const { children, className, close } = this.props;
+
+    return (
+      <div className={className}>
+        <div className={styles.overlay}></div>
+        <div className={styles.main}>
+          <Close
+            className={styles.close}
+            fill="#333"
+            opacity={0.25}
+            size={20}
+            onClick={close}
+          />
+          {children}
+        </div>
+      </div>
+    );
+  }
+}
 
 export default Modal;
