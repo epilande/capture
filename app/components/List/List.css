@@ -11,6 +11,14 @@
   box-shadow: 0 1px 3px 0 color(#000 alpha(-80%));
 }
 
+.title {
+  display: inline-block;
+  width: 85%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .progress {
   float: right;
   color: color(#333 alpha(-50%));
