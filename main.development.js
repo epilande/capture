@@ -1,23 +1,11 @@
-/* eslint strict: 0 */
-'use strict';
+import { app, BrowserWindow, Menu, shell } from 'electron';
 
-process.env.NODE_ENV = process.env.NODE_ENV || 'production';
-
-const electron = require('electron');
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
-const Menu = electron.Menu;
-const crashReporter = electron.crashReporter;
-const shell = electron.shell;
 let menu;
 let template;
 let mainWindow = null;
 
-
-crashReporter.start();
-
 if (process.env.NODE_ENV === 'development') {
-  require('electron-debug')();
+  require('electron-debug')(); // eslint-disable-line global-require
 }
 
 app.on('window-all-closed', () => {

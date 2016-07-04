@@ -24,6 +24,7 @@ const DEFAULT_OPTS = {
     '/test($|/)',
     '/tools($|/)',
     '/release($|/)',
+    '/main.development.js'
   ].concat(devDeps.map(name => `/node_modules/${name}($|/)`)),
 };
 
