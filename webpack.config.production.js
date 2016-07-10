@@ -1,54 +1,60 @@
-/* eslint strict: 0 */
-'use strict';
+import webpack from 'webpack';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import baseConfig from './webpack.config.base';
 
-const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const webpackTargetElectronRenderer = require('webpack-target-electron-renderer');
-const baseConfig = require('./webpack.config.base');
+const config = {
+  ...baseConfig,
 
+  devtool: 'source-map',
 
-const config = Object.create(baseConfig);
+  entry: './app/index',
 
-config.devtool = 'source-map';
+  output: {
+    ...baseConfig.output,
+    publicPath: '../dist/',
+  },
 
-config.entry = './app/index';
+  module: {
+    ...baseConfig.module,
+    loaders: [
+      ...baseConfig.module.loaders,
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract(
+          'style-loader',
+          'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader' // eslint-disable-line
+        ),
+      },
+    ]
+  },
 
-config.output.publicPath = '../dist/';
+  postcss: function() {
+    return [
+      require('postcss-modules-values'),
+      require('postcss-import'),
+      require('postcss-nested'),
+      require('postcss-cssnext')({ browsers: ['last 2 versions', 'IE > 10'] }),
+    ];
+  },
 
-config.module.loaders.push({
-  test: /\.css$/,
-  loader: ExtractTextPlugin.extract(
-    'style-loader',
-    'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss-loader' // eslint-disable-line
-  ),
-});
+  plugins: [
+    ...baseConfig.plugins,
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production'),
+      },
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        screw_ie8: true,
+        warnings: false,
+      },
+    }),
+    new ExtractTextPlugin('styles.css', { allChunks: true }),
+  ],
 
-config.postcss = function postcss() {
-  return [
-    require('postcss-modules-values'),
-    require('postcss-import'),
-    require('postcss-nested'),
-    require('postcss-cssnext')({ browsers: ['last 2 versions', 'IE > 10'] }),
-  ];
+  target: 'electron-renderer',
 };
 
-config.plugins.push(
-  new webpack.optimize.OccurenceOrderPlugin(),
-  new webpack.DefinePlugin({
-    __DEV__: false,
-    'process.env': {
-      NODE_ENV: JSON.stringify('production'),
-    },
-  }),
-  new webpack.optimize.UglifyJsPlugin({
-    compressor: {
-      screw_ie8: true,
-      warnings: false,
-    },
-  }),
-  new ExtractTextPlugin('styles.css', { allChunks: true })
-);
-
-config.target = webpackTargetElectronRenderer(config);
-
-module.exports = config;
+export default config;

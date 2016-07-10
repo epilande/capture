@@ -3,6 +3,6 @@
   /* @import 'sanitize.css/sanitize.css'; */
 
   /* Global styles */
-  @import 'styles/global/_base';
-  @import 'styles/global/_heading';
+  @import 'styles/global/_base.css';
+  @import 'styles/global/_heading.css';
 }

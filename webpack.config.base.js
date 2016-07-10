@@ -1,19 +1,14 @@
-/* eslint strict: 0 */
-'use strict';
-
-const path = require('path');
-const fs = require('fs');
+import fs from 'fs'
+import path from 'path';
 
 const nodeModules = fs.readdirSync('node_modules').filter(x => x !== '.bin');
 
-module.exports = {
+export default {
   module: {
     loaders: [
       {
         test: /\.jsx?$/,
-        loaders: [
-          'babel-loader',
-        ],
+        loaders: ['babel-loader'],
         exclude: /node_modules/,
       },
       {
@@ -30,7 +25,7 @@ module.exports = {
   resolve: {
     root: path.resolve('app'),
     modulesDirectories: ['node_modules'],
-    extensions: ['', '.js', '.jsx', '.css'],
+    extensions: ['', '.js', '.jsx'],
     packageMains: ['webpack', 'browser', 'web', 'browserify', ['jam', 'main'], 'main'],
   },
   plugins: [],
