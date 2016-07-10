@@ -4,14 +4,19 @@
   "env": {
     "browser": true,
     "mocha": true,
-    "node": true
+    "node": true,
+    "electron": true
   },
   "rules": {
-    "react/jsx-no-bind": 0,
-    "react/jsx-boolean-value": 0,
-    "no-use-before-define": 0
+  },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack.config.base.js"
+      }
+    }
   },
   "plugins": [
-    "react"
+    "react", "import"
   ]
 }
