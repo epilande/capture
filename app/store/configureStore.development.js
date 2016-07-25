@@ -1,18 +1,11 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import { persistState } from 'redux-devtools';
 import thunk from 'redux-thunk';
 import debounce from 'redux-debounced';
 import rootReducer from 'reducers';
-import DevTools from 'containers/DevTools';
 
 const finalCreateStore = compose(
   applyMiddleware(thunk, debounce),
-  DevTools.instrument(),
-  persistState(
-    window.location.href.match(
-      /[?&]debug_session=([^&]+)\b/
-    )
-  )
+  window.devToolsExtension ? window.devToolsExtension() : noop => noop
 )(createStore);
 
 export default function configureStore(initialState) {
