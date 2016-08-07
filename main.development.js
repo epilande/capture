@@ -136,7 +136,7 @@ app.on('ready', async () => {
         label: 'Reload',
         accelerator: 'Command+R',
         click() {
-          mainWindow.restart();
+          mainWindow.webContents.reload();
         },
       }, {
         label: 'Toggle Full Screen',
@@ -219,7 +219,7 @@ app.on('ready', async () => {
         label: '&Reload',
         accelerator: 'Ctrl+R',
         click() {
-          mainWindow.restart();
+          mainWindow.webContents.reload();
         },
       }, {
         label: 'Toggle &Full Screen',
