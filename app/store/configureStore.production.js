@@ -1,12 +1,12 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import debounce from 'redux-debounced';
 import rootReducer from 'reducers';
 
-const finalCreateStore = compose(
-  applyMiddleware(thunk, debounce)
-)(createStore);
+const middleware = [thunk, debounce];
 
-export default function configureStore(initialState) {
-  return finalCreateStore(rootReducer, initialState);
+const enhancer = applyMiddleware(...middleware);
+
+export default function configureStore(initialState = {}) {
+  return createStore(rootReducer, initialState, enhancer);
 }

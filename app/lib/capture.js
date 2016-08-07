@@ -8,7 +8,6 @@ export function init(url, settings = {}, callback) {
   const video = ytdl(url, options, { cwd: __dirname });
 
   video.on('error', (err) => {
-    console.log(err);
     return callback(err, video);
   });
 

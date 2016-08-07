@@ -46,7 +46,7 @@ class Home extends Component {
   }
 
   _setOutput() {
-    const dialog = require('remote').dialog;
+    const { dialog } = require('electron').remote
     const dir = dialog.showOpenDialog({ properties: ['openDirectory', 'createDirectory'] });
 
     if (dir) {

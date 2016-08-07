@@ -32,17 +32,23 @@ app.on('ready', async () => {
   await installExtensions();
 
   mainWindow = new BrowserWindow({
+    show: false,
     'min-width': 767,
     'min-height': 400,
     width: 1024,
     height: 728,
   });
 
+  mainWindow.loadURL(`file://${__dirname}/app/app.html`);
+
+  mainWindow.webContents.on('did-finish-load', () => {
+    mainWindow.show();
+    mainWindow.focus();
+  });
+
   mainWindow.webContents.on('dom-ready', () => {
     mainWindow.webContents.send('downloads-dir', app.getPath('downloads'));
   });
-
-  mainWindow.loadURL(`file://${__dirname}/app/app.html`);
 
   mainWindow.on('closed', () => {
     mainWindow = null;
