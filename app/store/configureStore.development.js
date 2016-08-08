@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import debounce from 'redux-debounced';
+import createDebounce from 'redux-debounced';
 import rootReducer from 'reducers';
 import * as settingsActions from '../actions/settings';
 import * as downloadActions from '../actions/download';
@@ -10,7 +10,7 @@ const actionCreators = {
   ...downloadActions,
 };
 
-const middleware = [thunk, debounce];
+const middleware = [thunk, createDebounce()];
 
 const enhancer = compose(
   applyMiddleware(...middleware),
