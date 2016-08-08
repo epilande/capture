@@ -50,7 +50,10 @@ class Input extends Component {
   }
 
   render() {
-    const { ...props } = this.props;
+    const {
+      onEnter, // eslint-disable-line no-unused-vars
+      ...props
+    } = this.props;
     const { value, valid } = this.state;
 
     let errors;
