@@ -1,7 +1,9 @@
 import fs from 'fs'
 import path from 'path';
 
-const nodeModules = fs.readdirSync('node_modules').filter(x => x !== '.bin');
+const nodeModules = fs.readdirSync('node_modules').filter(x => {
+  return x !== '.bin' && x !== 'babel-polyfill'
+});
 
 export default {
   module: {
