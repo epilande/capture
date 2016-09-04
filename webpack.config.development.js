@@ -1,6 +1,8 @@
 import webpack from 'webpack';
 import baseConfig from './webpack.config.base';
 
+const port = process.env.PORT || 3000;
+
 const config = {
   ...baseConfig,
 
@@ -9,13 +11,13 @@ const config = {
   devtool: 'eval',
 
   entry: [
-    'webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr',
+    `webpack-hot-middleware/client?path=http://localhost:${port}/__webpack_hmr`,
     './app/index',
   ],
 
   output: {
     ...baseConfig.output,
-    publicPath: 'http://localhost:3000/dist/',
+    publicPath: `http://localhost:${port}/dist/`,
   },
 
   module: {
